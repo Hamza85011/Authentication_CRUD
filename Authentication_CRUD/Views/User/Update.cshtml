@@ -1,0 +1,55 @@
+﻿@model Authentication_CRUD.Models.UserModelcs
+
+<style>
+    .form-group {
+        background-color: #f8f8f8;
+        padding: 20px;
+        border: 1px solid #ddd;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .control-label {
+        color: #051948;
+        font-weight: bold;
+    }
+</style>
+<h1 style="color: #051948;">Update a record</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" method="post">
+            <div class="form-group">
+                <label asp-for="First_Name" class="control-label"></label>
+                <input asp-for="First_Name" class="form-control" />
+                <span asp-validation-for="First_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Last_Name" class="control-label"></label>
+                <input asp-for="Last_Name" class="form-control" />
+                <span asp-validation-for="Last_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetList" class="btn btn-primary" style="margin-top: 10px;">Back to List</a>
+</div>

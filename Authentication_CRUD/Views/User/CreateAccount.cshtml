@@ -1,0 +1,80 @@
+﻿@model Authentication_CRUD.Models.UserLogin
+
+@{
+    ViewData["Title"] = "CreateAccount";
+}
+@{
+    var errorMessage = TempData["InsertMsge"] as string;
+}
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+<style>
+    .form-group {
+        background-color: #f8f8f8;
+        padding: 20px;
+        border: 1px solid #ddd;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .control-label {
+        color: #051948;
+        font-weight: bold;
+    }
+    a{
+      
+        color: #051948;
+    }
+    a:hover{
+            color: rgb(26,115,232);
+
+    }
+</style>
+<h1>CreateAccount</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAccount">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create Account" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <h6 style="margin-top:20px"><a asp-action="SignIn">Login </a>If you have already Account</h6>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

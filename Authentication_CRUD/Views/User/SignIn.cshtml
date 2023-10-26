@@ -1,0 +1,75 @@
+﻿@model Authentication_CRUD.Models.UserLogin
+
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+@{
+    var errorMessagee = TempData["Message"] as string;
+}
+@if (!string.IsNullOrEmpty(errorMessagee))
+{
+    <div class="alert alert-success">@errorMessagee</div>
+}
+
+@{
+    var errorMessage = TempData["InsertMsge"] as string;
+}
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+<style>
+    .form-group {
+        background-color: #f8f8f8;
+        padding: 20px;
+        border: 1px solid #ddd;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .control-label {
+        color: #051948;
+        font-weight: bold;
+    }
+
+    a {
+        color: #051948;
+    }
+
+        a:hover {
+            color: rgb(26,115,232);
+        }
+</style>
+<h4>UserLogin</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" action="/User/SignIn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="SignIn" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="CreateAccount" style="margin-top: 30px; color: #051948 font-weight: bold;">Register Your Account</a>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

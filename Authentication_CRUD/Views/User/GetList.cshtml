@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Authentication_CRUD.Models.UserModelcs>
+
+@{
+    ViewData["Title"] = "GetList";
+}
+
+@{
+    var errorMessage = TempData["Message"] as string;
+}
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-success">@errorMessage</div>
+}
+@{
+    var errorrMessage = TempData["InsertMsg"] as string;
+}
+@if (!string.IsNullOrEmpty(errorrMessage))
+{
+    <div class="alert alert-success">@errorrMessage</div>
+}
+@{
+    var errorrrMessage = TempData["DeleteMsg"] as string;
+}
+@if (!string.IsNullOrEmpty(errorrrMessage))
+{
+    <div class="alert alert-success">@errorrrMessage</div>
+}
+@{
+    var erroroMessage = TempData["InsertMsge"] as string;
+}
+@if (!string.IsNullOrEmpty(erroroMessage))
+{
+    <div class="alert alert-success">@erroroMessage</div>
+}
+@{
+    var errrorMessage = TempData[" DelectMsg"] as string;
+}
+@if (!string.IsNullOrEmpty(errrorMessage))
+{
+    <div class="alert alert-success">@errrorMessage</div>
+}
+<h1 style="color: #051948;">GetList from Database</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Product</a>
+</p>
+<style>
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+    }.table th,
+    .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            font-family: 'Poppins', sans-serif;
+    }
+
+    .edit {
+        background-color: #0275d8;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        color: white;
+        margin-right: 7px;
+    }
+    .details {
+        background-color: #5cb85c;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        color: white;
+        margin-right: 7px;
+    }
+    .delete {
+        background-color: #d9534f;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        color: white;
+    }
+   .edit:hover, .details:hover, .delete:hover {
+            color: white;
+   }
+</style>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Last_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+           @* <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.First_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Last_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.ActionLink("Update", "Update", new {  id=item.Id},new { @class = "edit"})
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "details"})
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.Id }, new { @class = "delete"})
+                </td>
+            </tr>*@
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.First_Name @item.Last_Name</h5>
+                        <p class="card-text">Age: @item.Age, Gender: @item.Gender</p>
+                    </div>
+                </div>
+            </div>
+           
+        }
+    </tbody>
+</table>
